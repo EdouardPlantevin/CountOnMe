@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
     
+    var simpleCalc = SimpleCalc()
+    
     var elements: [String] {
         return textView.text.split(separator: " ").map { "\($0)" }
     }
@@ -72,7 +74,25 @@ class ViewController: UIViewController {
             self.present(alertVC, animated: true, completion: nil)
         }
     }
-
+    @IBAction func tappedMultiplicationButton(_ sender: Any) {
+        if canAddOperator {
+            textView.text.append(" ✕ ")
+        } else {
+            let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alertVC, animated: true, completion: nil)
+        }
+    }
+    @IBAction func tappedDivisonButton(_ sender: Any) {
+        if canAddOperator {
+            textView.text.append(" ÷ ")
+        } else {
+            let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alertVC, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func tappedEqualButton(_ sender: UIButton) {
         guard expressionIsCorrect else {
             let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert)
@@ -97,8 +117,10 @@ class ViewController: UIViewController {
             
             let result: Int
             switch operand {
-            case "+": result = left + right
-            case "-": result = left - right
+            case "+": result = simpleCalc.addition(firstNb: left, secondNb: right)
+            case "-": result = simpleCalc.substraction(firstNb: left, secondNb: right)
+            case "✕": result = simpleCalc.multiplication(firstNb: left, secondNb: right)
+            case "÷": result = simpleCalc.division(firstNb: left, secondNb: right)
             default: fatalError("Unknown operator !")
             }
             

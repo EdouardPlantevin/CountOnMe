@@ -42,6 +42,11 @@ class ViewController: UIViewController {
     }
     
     
+    @IBAction func tappedResetButton(_ sender: Any) {
+        textView.text = ""
+    }
+    
+    
     // View actions
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         guard let numberText = sender.title(for: .normal) else {
@@ -51,13 +56,11 @@ class ViewController: UIViewController {
         if expressionHaveResult {
             textView.text = ""
         }
-        if elements.count > 3 {
-            print("Non NOn NON")
-        } else {
+        if elements.count <= 3 {
             textView.text.append(numberText)
         }
     }
-    
+
     @IBAction func tappedAdditionButton(_ sender: UIButton) {
         if canAddOperator && elements.count < 3 {
             textView.text.append(" + ")
@@ -102,6 +105,8 @@ class ViewController: UIViewController {
             alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             return self.present(alertVC, animated: true, completion: nil)
         }
+        
+        
         
         guard expressionHaveEnoughElement else {
             let alertVC = UIAlertController(title: "Zéro!", message: "Démarrez un nouveau calcul !", preferredStyle: .alert)

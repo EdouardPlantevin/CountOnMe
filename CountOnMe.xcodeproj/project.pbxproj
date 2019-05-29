@@ -13,7 +13,7 @@
 		1FA43BDA224E569A00F565CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FA43BD9224E569A00F565CB /* Assets.xcassets */; };
 		1FA43BDD224E569A00F565CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA43BDB224E569A00F565CB /* LaunchScreen.storyboard */; };
 		7A28D3EE2297E7A300CA54A4 /* SimpleCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28D3ED2297E7A300CA54A4 /* SimpleCalc.swift */; };
-		7A28D3F62297EEFC00CA54A4 /* SimpleCalcTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28D3F52297EEFC00CA54A4 /* SimpleCalcTestCase.swift */; };
+		7A28D400229E89BD00CA54A4 /* SimpleCalcTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28D3FF229E89BD00CA54A4 /* SimpleCalcTestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +36,8 @@
 		1FA43BDE224E569A00F565CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A28D3ED2297E7A300CA54A4 /* SimpleCalc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCalc.swift; sourceTree = "<group>"; };
 		7A28D3F32297EEFC00CA54A4 /* CountOnMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountOnMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A28D3F52297EEFC00CA54A4 /* SimpleCalcTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCalcTestCase.swift; sourceTree = "<group>"; };
 		7A28D3F72297EEFC00CA54A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A28D3FF229E89BD00CA54A4 /* SimpleCalcTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCalcTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,8 +125,8 @@
 		7A28D3F42297EEFC00CA54A4 /* CountOnMeTests */ = {
 			isa = PBXGroup;
 			children = (
-				7A28D3F52297EEFC00CA54A4 /* SimpleCalcTestCase.swift */,
 				7A28D3F72297EEFC00CA54A4 /* Info.plist */,
+				7A28D3FF229E89BD00CA54A4 /* SimpleCalcTestCase.swift */,
 			);
 			path = CountOnMeTests;
 			sourceTree = "<group>";
@@ -242,7 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A28D3F62297EEFC00CA54A4 /* SimpleCalcTestCase.swift in Sources */,
+				7A28D400229E89BD00CA54A4 /* SimpleCalcTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

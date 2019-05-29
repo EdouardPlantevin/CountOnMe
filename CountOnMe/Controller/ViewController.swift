@@ -51,12 +51,15 @@ class ViewController: UIViewController {
         if expressionHaveResult {
             textView.text = ""
         }
-        
-        textView.text.append(numberText)
+        if elements.count > 3 {
+            print("Non NOn NON")
+        } else {
+            textView.text.append(numberText)
+        }
     }
     
     @IBAction func tappedAdditionButton(_ sender: UIButton) {
-        if canAddOperator {
+        if canAddOperator && elements.count < 3 {
             textView.text.append(" + ")
         } else {
             let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
@@ -66,7 +69,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tappedSubstractionButton(_ sender: UIButton) {
-        if canAddOperator {
+        if canAddOperator && elements.count < 3 {
             textView.text.append(" - ")
         } else {
             let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
@@ -75,7 +78,7 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func tappedMultiplicationButton(_ sender: Any) {
-        if canAddOperator {
+        if canAddOperator && elements.count < 3 {
             textView.text.append(" ✕ ")
         } else {
             let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
@@ -84,7 +87,7 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func tappedDivisonButton(_ sender: Any) {
-        if canAddOperator {
+        if canAddOperator && elements.count < 3 {
             textView.text.append(" ÷ ")
         } else {
             let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
@@ -115,20 +118,13 @@ class ViewController: UIViewController {
             let operand = operationsToReduce[1]
             let right = Int(operationsToReduce[2])!
             
-            let result: Int
-            switch operand {
-            case "+": result = simpleCalc.addition(firstNb: left, secondNb: right)
-            case "-": result = simpleCalc.substraction(firstNb: left, secondNb: right)
-            case "✕": result = simpleCalc.multiplication(firstNb: left, secondNb: right)
-            case "÷": result = simpleCalc.division(firstNb: left, secondNb: right)
-            default: fatalError("Unknown operator !")
-            }
-            
+            let result: Int = simpleCalc.calcul(left: left, right: right, operand: operand)
+
             operationsToReduce = Array(operationsToReduce.dropFirst(3))
             operationsToReduce.insert("\(result)", at: 0)
         }
-        
-        textView.text.append(" = \(operationsToReduce.first!)")
+        textView.text = ""
+        textView.text.append("\(operationsToReduce.first!)")
     }
 
 }

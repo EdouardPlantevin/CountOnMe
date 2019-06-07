@@ -10,33 +10,23 @@ import Foundation
 
 class SimpleCalc {
     
-    func addition(firstNb: Int, secondNb: Int) -> Int {
-        let result = firstNb + secondNb
-        return result
+    func changeArrayToString(arrayString: [String]) -> String {
+        var stringContaintAllElement: String = ""
+        for element in arrayString {
+            stringContaintAllElement.append(contentsOf: element)
+        }
+        let StringMultiplication = stringContaintAllElement.replacingOccurrences(of: "✕", with: "*", options: .literal, range: nil)
+        let StringDivision = StringMultiplication.replacingOccurrences(of: "÷", with: "/", options: .literal, range: nil)
+        stringContaintAllElement = StringDivision
+        return stringContaintAllElement
     }
     
-    func substraction(firstNb: Int, secondNb: Int) -> Int {
-        let result = firstNb - secondNb
-        return result
-    }
-    
-    func multiplication(firstNb: Int, secondNb: Int) -> Int {
-        let result = firstNb * secondNb
-        return result
-    }
-    
-    func division(firstNb: Int, secondNb: Int) -> Int {
-        let result = firstNb / secondNb
-        return result
-    }
-    
-    func calcul(left: Int, right: Int, operand: String) -> Int {
-        switch operand {
-        case "+": return addition(firstNb: left, secondNb: right)
-        case "-": return substraction(firstNb: left, secondNb: right)
-        case "✕": return multiplication(firstNb: left, secondNb: right)
-        case "÷": return division(firstNb: left, secondNb: right)
-        default: fatalError("Unknown operator !")
+    func calculString(stringcalcul: String) -> Int {
+        let expression = NSExpression(format:stringcalcul)
+        if let result = expression.expressionValue(with: nil, context: nil) as? NSNumber {
+            return Int(truncating: result)
+        } else {
+            return 0
         }
     }
 }

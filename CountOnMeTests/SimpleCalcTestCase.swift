@@ -17,24 +17,13 @@ class SimpleCalcTestCase: XCTestCase {
         simpleCalc = SimpleCalc()
     }
     
-    func testGiven1_WhenAditionTo1_ThenResultShouldBe2() {
-        let result = simpleCalc.addition(firstNb: 1, secondNb: 1)
-        XCTAssertEqual(result, 2)
+    func testGivenArray_WhenCallFuncChangeArrayToString_ThenResultShouldReturnString() {
+        let result = simpleCalc.changeArrayToString(arrayString: ["1", "+", "2"])
+        XCTAssertEqual(result, "1+2")
     }
     
-    func testGiven1_WhenSustractionTo1_ThenResultShouldBe0() {
-        let result = simpleCalc.substraction(firstNb: 1, secondNb: 1)
-        XCTAssertEqual(result, 0)
+    func textGivenStringTwoMoreTwoMulti10_ThenCallFuncCalculString_ThenResultSouldReturnIntAnd22() {
+        let result = simpleCalc.calculString(stringcalcul: "2+2*10")
+        XCTAssertEqual(result, 22)
     }
-    
-    func testGiven1_WhenMultiplacationTo1_ThenResultShouldBe1() {
-        let result = simpleCalc.multiplication(firstNb: 1, secondNb: 1)
-        XCTAssertEqual(result, 1)
-    }
-    
-    func testGiven1_WhenDivisionTo1_ThenResultShouldBe1() {
-        let result = simpleCalc.division(firstNb: 1, secondNb: 1)
-        XCTAssertEqual(result, 1)
-    }
-
 }

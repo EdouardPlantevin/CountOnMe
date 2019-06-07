@@ -56,13 +56,13 @@ class ViewController: UIViewController {
         if expressionHaveResult {
             textView.text = ""
         }
-        if elements.count <= 3 {
-            textView.text.append(numberText)
-        }
+        
+        textView.text.append(numberText)
+
     }
 
     @IBAction func tappedAdditionButton(_ sender: UIButton) {
-        if canAddOperator && elements.count < 3 {
+        if canAddOperator {
             textView.text.append(" + ")
         } else {
             let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tappedSubstractionButton(_ sender: UIButton) {
-        if canAddOperator && elements.count < 3 {
+        if canAddOperator {
             textView.text.append(" - ")
         } else {
             let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func tappedMultiplicationButton(_ sender: Any) {
-        if canAddOperator && elements.count < 3 {
+        if canAddOperator {
             textView.text.append(" ✕ ")
         } else {
             let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
@@ -90,7 +90,7 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func tappedDivisonButton(_ sender: Any) {
-        if canAddOperator && elements.count < 3 {
+        if canAddOperator {
             textView.text.append(" ÷ ")
         } else {
             let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
@@ -116,18 +116,13 @@ class ViewController: UIViewController {
         
         // Create local copy of operations
         var operationsToReduce = elements
+        var stringContaintCalcul: String = ""
         
-        // Iterate over operations while an operand still here
-        while operationsToReduce.count > 1 {
-            let left = Int(operationsToReduce[0])!
-            let operand = operationsToReduce[1]
-            let right = Int(operationsToReduce[2])!
-            
-            let result: Int = simpleCalc.calcul(left: left, right: right, operand: operand)
-
-            operationsToReduce = Array(operationsToReduce.dropFirst(3))
-            operationsToReduce.insert("\(result)", at: 0)
-        }
+        stringContaintCalcul = simpleCalc.changeArrayToString(arrayString: operationsToReduce)
+        
+        operationsToReduce = Array(operationsToReduce.dropLast(operationsToReduce.count))
+        operationsToReduce.insert("\(simpleCalc.calculString(stringcalcul: stringContaintCalcul))", at: 0)
+        
         textView.text = ""
         textView.text.append("\(operationsToReduce.first!)")
     }
